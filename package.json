@@ -1,0 +1,30 @@
+{
+  "name": "basic-dsa",
+  "version": "0.0.1",
+  "author": "Vipul Waghmare",
+  "license": "ISC",
+  "description": "This is for some new data structures and algorithms",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "rimraf dist && npm run build:js && npm run build:types",
+    "build:js": "babel src --out-dir dist --extensions \".ts\"",
+    "build:types": "tsc"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-typescript": "^7.27.1",
+    "@jest/globals": "^29.5.14",
+    "@types/jest": "^29.5.14",
+    "babel-jest": "^29.5.14",
+    "ts-jest": "^29.3.4",
+    "tsc": "^2.0.4",
+    "typescript": "^5.8.3"
+  }
+}
