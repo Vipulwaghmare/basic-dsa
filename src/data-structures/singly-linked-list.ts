@@ -7,7 +7,7 @@ class SLLNode<T> {
   }
 }
 
-class SinglyLinkedList<T> {
+export class SinglyLinkedList<T> {
   private length: number;
   private head: SLLNode<T> | null;
   private tail: SLLNode<T> | null;
@@ -17,6 +17,10 @@ class SinglyLinkedList<T> {
     this.tail = null;
   }
 
+  /**
+   * Gets the number of elements in the list.
+   * @returns The current size of the linked list.
+   */
   get size() {
     return this.length;
   }
@@ -143,5 +147,14 @@ class SinglyLinkedList<T> {
     this.tail = this.head;
     this.head = prev;
     return true;
+  }
+
+  print() {
+    const arr = this.toArray();
+    console.log('----- printing start -----')
+    arr.forEach((item, index) => {
+      console.log(`[${index}] =>`, item)
+    })
+    console.log('----- printing end -----')
   }
 }

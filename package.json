@@ -12,7 +12,7 @@
     "url": "https://github.com/Vipulwaghmare/basic-dsa/issues"
   },
   "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
