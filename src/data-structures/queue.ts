@@ -11,7 +11,7 @@ export class Queue<T> {
    */
   enqueue(item: T) {
     this.queue.push(item);
-    return this.queue;
+    return item;
   }
 
   /**

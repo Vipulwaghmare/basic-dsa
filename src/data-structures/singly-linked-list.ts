@@ -25,6 +25,19 @@ export class SinglyLinkedList<T> {
     return this.length;
   }
 
+  /**
+   * Checks if the list is empty.
+   * @returns True if the list is empty, false otherwise.
+   */
+  isEmpty() {
+    return this.length === 0
+  }
+
+  /**
+   * Adds an element to the end of the list.
+   * @param value The element to add to the list.
+   * @returns The value that was added to the list.
+   */
   push(value: T) {
     const node = new SLLNode(value);
     if (!this.head || !this.tail) {
@@ -35,8 +48,13 @@ export class SinglyLinkedList<T> {
       this.tail = node;
     }
     this.length++;
+    return value;
   }
 
+  /**
+   * Removes an element from the end of the list and returns it.
+   * @returns The element that was removed from the list. If the list is empty, undefined is returned.
+   */
   pop() {
     if (!this.tail || !this.head) return undefined;
     if (this.length === 1) {
@@ -58,7 +76,11 @@ export class SinglyLinkedList<T> {
     return current?.value;
   }
 
-  // add to start
+  /**
+   * Adds an element to the beginning of the list.
+   * @param value The element to add to the list.
+   * @returns The value that was added to the list.
+   */
   unshift(value: T) {
     const node = new SLLNode(value);
     if (!this.head) {
@@ -69,9 +91,14 @@ export class SinglyLinkedList<T> {
       this.head.next = prevHead;
       this.length++;
     }
+    return value;
   }
 
-  // remove from start
+  /**
+   * Removes the first element from the list and returns it.
+   * If the list has only one element or is empty, it uses the pop method to handle the removal.
+   * @returns The value of the removed element, or undefined if the list was empty.
+   */
   shift() {
     if (this.length <= 1 || !this.head || !this.tail) {
       return this.pop();
@@ -83,7 +110,13 @@ export class SinglyLinkedList<T> {
     return prevHead.value;
   }
 
-  get(index: number) {
+  /**
+   * Gets the element at the specified index from the list.
+   * @param index The index of the element to retrieve.
+   * @param onlyValue If true, only the value of the node is returned. If false, the entire node is returned.
+   * @returns The value or node at the specified index, or undefined if the index is out of bounds.
+   */
+  get(index: number, onlyValue = true) {
     if (this.length <= index || !this.head || !this.tail) return undefined;
     let current: SLLNode<T> | null = this.head;
     let currentIndex = 0;
@@ -91,8 +124,15 @@ export class SinglyLinkedList<T> {
       current = current.next;
       currentIndex++;
     }
-    return current;
+    return onlyValue ? current?.value : current;
   }
+
+  /**
+   * Updates the value of the node at the specified index.
+   * @param index The index of the node to update.
+   * @param value The new value to set.
+   * @returns Undefined if the index is out of bounds.
+   */
 
   set(index: number, value: T) {
     if (index >= this.length) return undefined;
@@ -101,21 +141,31 @@ export class SinglyLinkedList<T> {
       this.head = node;
       this.tail = node;
     } else {
-      const item = this.get(index);
+      const item = this.get(index, false) as SLLNode<T> | null;
       if (item) item.value = value;
     }
+    return value;
   }
 
+  /**
+   * Inserts an element at the specified index in the list.
+   * @param index The index at which to insert the new element.
+   * @param value The element to insert into the list.
+   * @returns Undefined if the index is out of bounds.
+   */
+
   insert(index: number, value: T) {
-    if (index >= this.length) return undefined;
+    if (index > this.length) return undefined;
     if (index === 0) return this.unshift(value);
+    if (index == - this.length) return this.push(value)
     const node = new SLLNode(value);
-    const prevNode = this.get(index - 1);
-    const nextNode = prevNode?.next ?? null;
+    const prevNode = this.get(index - 1, false) as SLLNode<T> | null;
     if (prevNode) {
+      node.next = prevNode.next;
       prevNode.next = node;
-      node.next = nextNode;
+      this.length++;
     }
+    return value;
   }
 
   clear() {
@@ -124,6 +174,10 @@ export class SinglyLinkedList<T> {
     this.length = 0;
   }
 
+  /**
+   * Returns an array containing the elements of the list.
+   * @returns An array of the elements in the list, in order.
+   */
   toArray() {
     let current = this.head;
     let result: T[] = [];
@@ -134,6 +188,10 @@ export class SinglyLinkedList<T> {
     return result;
   }
 
+  /**
+   * Reverses the list in place.
+   * @returns True if the list was reversed, undefined if the list was empty.
+   */
   reverse() {
     if (this.length === 0) return undefined;
     let prev = null;

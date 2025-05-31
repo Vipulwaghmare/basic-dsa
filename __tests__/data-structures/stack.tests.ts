@@ -9,11 +9,11 @@ describe('Stack', () => {
   });
 
   test('push and peek', () => {
-    stack.push(1);
+    expect(stack.push(1)).toBe(1);
     expect(stack.peek()).toBe(1);
-    stack.push(2);
+    expect(stack.push(2)).toBe(2);
     expect(stack.peek()).toBe(2);
-    stack.push(3);
+    expect(stack.push(3)).toBe(3);
     expect(stack.peek()).toBe(3);
   });
 
@@ -64,6 +64,7 @@ describe('Stack', () => {
     stack.push(3);
     expect(stack.isEmpty()).toBe(false);
     expect(stack.size).toBe(3);
+    // Remove
     expect(stack.peek()).toBe(3);
     expect(stack.pop()).toBe(3);
     expect(stack.isEmpty()).toBe(false);

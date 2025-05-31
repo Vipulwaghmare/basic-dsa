@@ -12,7 +12,7 @@ export class Stack<T> {
 
   push(item: T) {
     this.stack.push(item);
-    return this.stack;
+    return item;
   }
 
   /**
