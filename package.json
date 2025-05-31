@@ -3,7 +3,14 @@
   "version": "0.0.1",
   "author": "Vipul Waghmare",
   "license": "ISC",
-  "description": "This is for some new data structures and algorithms",
+  "description": "This is for some not so complext data structures and algorithms",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vipulwaghmare/basic-dsa"
+  },
+  "bugs": {
+    "url": "https://github.com/Vipulwaghmare/basic-dsa/issues"
+  },
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
@@ -11,9 +18,9 @@
   ],
   "scripts": {
     "test": "jest",
-    "build": "rimraf dist && npm run build:js && npm run build:types",
+    "build": "rm -rf dist && npm run build:js && npm run build:types",
     "build:js": "babel src --out-dir dist --extensions \".ts\"",
-    "build:types": "tsc"
+    "build:types": "npx tsc"
   },
   "devDependencies": {
     "@babel/cli": "^7.27.2",
