@@ -168,6 +168,9 @@ export class SinglyLinkedList<T> {
     return value;
   }
 
+  /**
+   * Clears the list, setting the head, tail, and length back to initial state.
+   */
   clear() {
     this.head = null;
     this.tail = null;
@@ -186,6 +189,20 @@ export class SinglyLinkedList<T> {
       current = current.next
     }
     return result;
+  }
+
+  remove(index: number) {
+    if (index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+    if (this.length === 1) return this.clear();
+    const prevNode = this.get(index - 1, false) as SLLNode<T> | undefined;
+    const currentNode = prevNode?.next;
+    if (prevNode && currentNode) {
+      prevNode.next = currentNode.next;
+      currentNode.next = null;
+      return currentNode.value;
+    }
   }
 
   /**

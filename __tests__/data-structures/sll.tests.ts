@@ -136,6 +136,27 @@ describe('SinglyLinkedList', () => {
     expect(sll.toArray()).toEqual([])
   })
 
+  test('remove item', () => {
+    expect(sll.remove(4)).toBe(undefined)
+    expect(sll.toArray()).toEqual([])
+    sll.push(1);
+    sll.push(2);
+    sll.push(3);
+    sll.push(4);
+    sll.push(5);
+    expect(sll.toArray()).toEqual([1, 2, 3, 4, 5])
+    expect(sll.remove(0)).toBe(1)
+    expect(sll.toArray()).toEqual([2, 3, 4, 5])
+    expect(sll.remove(3)).toBe(5)
+    expect(sll.toArray()).toEqual([2, 3, 4])
+    expect(sll.remove(1)).toBe(3)
+    expect(sll.toArray()).toEqual([2, 4])
+    sll.clear();
+    expect(sll.size).toBe(0);
+    expect(sll.isEmpty()).toBe(true);
+    expect(sll.toArray()).toEqual([])
+  })
+
   test('reverse & clear', () => {
     sll.push(1);
     sll.push(2);
