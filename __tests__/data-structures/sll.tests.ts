@@ -173,4 +173,15 @@ describe('SinglyLinkedList', () => {
     expect(sll.isEmpty()).toBe(true);
     expect(sll.toArray()).toEqual([])
   })
+
+  test('Copy', () => {
+    sll.push(1);
+    sll.push(2);
+    sll.push(3);
+    sll.push(4);
+    sll.push(5);
+    expect(sll.toArray()).toEqual([1, 2, 3, 4, 5])
+    const newSll = sll.copy();
+    expect(newSll.toArray()).toEqual([1, 2, 3, 4, 5])
+  })
 });

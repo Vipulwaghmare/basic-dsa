@@ -191,6 +191,14 @@ export class SinglyLinkedList<T> {
     return result;
   }
 
+  /**
+   * Removes an element from the list at the specified index and returns it.
+   * If the index is 0, uses the shift method to handle the removal.
+   * If the index is equal to the list's length, uses the pop method to handle the removal.
+   * If the list has only one element or is empty, clears the list.
+   * @param index The index of the element to remove.
+   * @returns The value of the removed element, or undefined if the index is out of bounds.
+   */
   remove(index: number) {
     if (index >= this.length) return undefined;
     if (index === 0) return this.shift();
@@ -231,5 +239,19 @@ export class SinglyLinkedList<T> {
       console.log(`[${index}] =>`, item)
     })
     console.log('----- printing end -----')
+  }
+
+  /**
+   * Returns a deep copy of the singly linked list.
+   * @returns A new SinglyLinkedList containing the same elements as this list.
+   */
+  copy() {
+    const sll: SinglyLinkedList<T> = new SinglyLinkedList();
+    let current = this.head;
+    while (current) {
+      sll.push(current.value);
+      current = current.next;
+    }
+    return sll;
   }
 }

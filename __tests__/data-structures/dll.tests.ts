@@ -170,4 +170,15 @@ describe('DoublyLinkedList', () => {
     expect(dll.isEmpty()).toBe(true);
     expect(dll.toArray()).toEqual([])
   })
+
+  test('Copy', () => {
+    dll.push(1);
+    dll.push(2);
+    dll.push(3);
+    dll.push(4);
+    dll.push(5);
+    expect(dll.toArray()).toEqual([1, 2, 3, 4, 5])
+    const newdll = dll.copy();
+    expect(newdll.toArray()).toEqual([1, 2, 3, 4, 5])
+  })
 });

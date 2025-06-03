@@ -235,6 +235,13 @@ export class DoublyLinkedList<T> {
     })
     console.log('----- printing end -----')
   }
+  /**
+   * Reverses the doubly linked list in place.
+   * The head and tail of the list are swapped, and the direction 
+   * of each node's pointers is reversed.
+   * @returns True if the list was successfully reversed, undefined if the list is empty.
+   */
+
   reverse() {
     if (this.length === 0 || !this.head || !this.tail) return undefined;
     let current: DLLNode<T> | null = this.head;
@@ -249,5 +256,19 @@ export class DoublyLinkedList<T> {
     this.head = this.tail;
     this.tail = temp;
     return true;
+  }
+
+  /**
+   * Returns a deep copy of the doubly linked list.
+   * @returns A new DoublyLinkedList containing the same elements as this list.
+   */
+  copy() {
+    const dll: DoublyLinkedList<T> = new DoublyLinkedList();
+    let current = this.head;
+    while (current) {
+      dll.push(current.value);
+      current = current.next;
+    }
+    return dll;
   }
 }

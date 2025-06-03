@@ -4,9 +4,10 @@
 
 ### Added
 
-- Added Data structures - Stack, Queue, Linked Lists (Singly & Doubly), Heap
+- Added Data structures - Stack, Queue, Linked Lists (Singly & Doubly), Heap ( Min and Max heap for numbers )
 
 <!-- ## [1.1.0] - 2025-04-20
+// example
 ### Added
 - Support for ABC protocol
 
